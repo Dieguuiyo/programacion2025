@@ -1,9 +1,14 @@
 <?php 
-
-$edad = 1;
-$edad += 100;
-$edad -43;
+$edad=1;
+$edad >= 20;
+$edad -=12;
 echo $edad;
+
+
+
+
+
+
 
 
 
