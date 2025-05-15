@@ -1,0 +1,4 @@
+<?php 
+$semana = [];
+$semana[] = 'lunes';
+?>
