@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APE AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .Contenedor {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .Titulo {
+            background-color: #4a4a4a;
+            color: #d0d0d0;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #333;
+        }
+
+        .AreaMensajes {
+            flex: 1;
+            background-color: #2a2a2a;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-end;
+            justify-content: flex-start;
+            overflow-y: auto;
+        }
+
+        .Tarjeta {
+            background-color: #6a6a6a;
+            color: #333;
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            max-width: 80%;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            align-self: flex-end;
+        }
+
+        .Tarjeta.entrega {
+            background-color: #8a8a8a;
+        }
+
+        .Tarjeta.parcial {
+            background-color: #7a7a7a;
+        }
+
+        .Tarjeta.aviso {
+            background-color: #9a9a9a;
+        }
+
+        .Tarjeta.cambio {
+            background-color: #6a6a6a;
+        }
+
+        .BarraInferior {
+            background-color: #3a3a3a;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            border-top: 1px solid #555;
+            gap: 10px;
+        }
+
+        .Imagen {
+            width: 30px;
+            height: 30px;
+            background-color: white;
+        }
+
+        .BotonArchivos {
+            width: 30px;
+            height: 30px;
+            background-color: #666;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .BotonArchivos:hover {
+            background-color: #777;
+        }
+
+        .BotonFotos {
+            width: 30px;
+            height: 30px;
+            background-color: #666;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .BotonFotos:hover {
+            background-color: #777;
+        }
+
+        .CampoTexto {
+            flex: 1;
+            background-color: #5a5a5a;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 5px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .CampoTexto::placeholder {
+            color: #aaa;
+        }
+
+        .BotonEnviar {
+            background-color: #666;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .BotonEnviar:hover {
+            background-color: #777;
+        }
+
+        /* Media Queries para Responsividad */
+        @media (max-width: 768px) {
+            .Titulo {
+                font-size: 20px;
+                padding: 12px;
+            }
+
+            .AreaMensajes {
+                padding: 15px;
+                gap: 12px;
+            }
+
+            .Tarjeta {
+                font-size: 13px;
+                padding: 10px 16px;
+                max-width: 85%;
+            }
+
+            .BarraInferior {
+                height: 55px;
+                padding: 0 12px;
+                gap: 8px;
+            }
+
+            .BotonArchivos,
+            .BotonFotos {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+
+            .CampoTexto {
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+
+            .BotonEnviar {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .Titulo {
+                font-size: 18px;
+                padding: 10px;
+                letter-spacing: 1px;
+            }
+
+            .AreaMensajes {
+                padding: 12px;
+                gap: 10px;
+            }
+
+            .Tarjeta {
+                font-size: 12px;
+                padding: 8px 14px;
+                max-width: 90%;
+            }
+
+            .BarraInferior {
+                height: 50px;
+                padding: 0 10px;
+                gap: 6px;
+            }
+
+            .BotonArchivos,
+            .BotonFotos {
+                width: 26px;
+                height: 26px;
+                font-size: 12px;
+            }
+
+            .CampoTexto {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .BotonEnviar {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="Contenedor">
+        <div class="Titulo">APE AI</div>
+        
+        <div class="AreaMensajes">
+            <div class="Tarjeta entrega">entrega programacion: 07/09/25</div>
+            <div class="Tarjeta parcial">parcial matematica: 09/09/2025</div>
+            <div class="Tarjeta aviso">AVISO FERIADO: 18/09/2025</div>
+            <div class="Tarjeta cambio">CAMBIO DE SALON: fisica en salon 08</div>
+        </div>
+        
+        <div class="BarraInferior">
+            <button class="BotonArchivos">📁</button>
+            <button class="BotonFotos">📷</button>
+            <input type="text" class="CampoTexto" placeholder="">
+            <button class="BotonEnviar">></button>
+        </div>
+    </div>
+</body>
+</html>
